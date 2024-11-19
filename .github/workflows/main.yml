@@ -13,11 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install backend dependencies
-        run: |
-          cd back
-          npm install
-        continue-on-error: false # Ce paramètre garantit que l'échec de l'installation arrêtera le pipeline.
+     # - name: Install backend dependencies
+        #run: |
+          #cd back
+          #npm install
+        #continue-on-error: false # Ce paramètre garantit que l'échec de l'installation arrêtera le pipeline.
 
       - name: Install dependencies and build
         run: |
@@ -26,23 +26,23 @@ jobs:
           npm run build
 
         # 9. Move frontend build to backend
-      - name: Move frontend build to backend
-        run: |
-          mkdir back/public
-          ls
-          cp -r front/dist/ back/public/
-          ls
+      #- name: Move frontend build to backend
+        #run: |
+         # mkdir back/public
+         #ls
+          #cp -r front/dist/ back/public/
+         # ls
         # mv dist/* back/public
         # cd back
-        continue-on-error: false
+        #continue-on-error: false
 
       # 10. Start the backend server
-      - name: Start the backend server
-        run: |
-          cd back
-          echo "PORT=3000" >> $GITHUB_ENV
-          nohup node server.js &
-        continue-on-error: false
+     # - name: Start the backend server
+       # run: |
+         # cd back
+         # echo "PORT=3000" >> $GITHUB_ENV
+         # nohup node server.js &
+        #continue-on-error: false
 
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -50,5 +50,5 @@ jobs:
           server: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: back/
+          local-dir: front/dist/
           server-dir: /01/
