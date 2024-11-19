@@ -50,7 +50,7 @@ const users = ref([]); // Données récupérées
 const error = ref(null); // Gestion des erreurs
 
 onMounted(() => {
-  fetch('http://localhost:3001/api/users/test')
+  fetch('https://cicdback-production.up.railway.app/api/users/test')
     .then(response => {
       if (!response.ok) {
         throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
