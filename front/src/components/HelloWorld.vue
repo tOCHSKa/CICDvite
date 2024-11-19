@@ -35,7 +35,7 @@
       <p v-if="error">{{ error }}</p>
       <ul v-if="users.length">
         <li v-for="(user, index) in users" :key="index">
-          {{ user.message }}
+          {{ user }}
         </li>
       </ul>
       <p v-else-if="!error">Chargement des données...</p>
