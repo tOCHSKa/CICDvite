@@ -30,6 +30,8 @@ jobs:
           mkdir back/public
           ls
           cp -r dist/ back/public/
+          cd back
+          ls
         # mv dist/* back/public
         # cd back
         continue-on-error: false
