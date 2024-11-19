@@ -24,6 +24,24 @@ jobs:
         run: |
           npm install
           npm run build
+
+
+
+       # 9. Move frontend build to backend
+      - name: Move frontend build to backend
+        run: |
+          mv dist/* back/public
+          cd back
+        continue-on-error: false 
+
+      # 10. Start the backend server
+      - name: Start the backend server
+        run: |
+          cd back
+          echo "PORT=3000" >> $GITHUB_ENV
+          node server.js
+        continue-on-error: false
+        
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
