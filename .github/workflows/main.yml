@@ -27,8 +27,9 @@ jobs:
         # 9. Move frontend build to backend
       - name: Move frontend build to backend
         run: |
-          mkdir back/publc
+          mkdir back/public
           ls
+          cp -r dist/ back/public/
         # mv dist/* back/public
         # cd back
         continue-on-error: false
@@ -47,5 +48,5 @@ jobs:
           server: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/
+          local-dir: back/dist/
           server-dir: /01/
