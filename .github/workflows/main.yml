@@ -27,8 +27,10 @@ jobs:
         # 9. Move frontend build to backend
       - name: Move frontend build to backend
         run: |
-          mv dist/* back/public
-          cd back
+          mkdir back/publc
+          ls
+        # mv dist/* back/public
+        # cd back
         continue-on-error: false
 
       # 10. Start the backend server
