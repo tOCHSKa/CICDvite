@@ -13,36 +13,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-        
       - name: Install backend dependencies
         run: |
           cd back
           npm install
-        continue-on-error: false  # Ce paramètre garantit que l'échec de l'installation arrêtera le pipeline.
+        continue-on-error: false # Ce paramètre garantit que l'échec de l'installation arrêtera le pipeline.
 
       - name: Install dependencies and build
         run: |
           npm install
           npm run build
 
-
-
-       # 9. Move frontend build to backend
+        # 9. Move frontend build to backend
       - name: Move frontend build to backend
         run: |
           mkdir -p back/public
           mv dist/* back/public
           cd back
-        continue-on-error: false 
+        continue-on-error: false
 
       # 10. Start the backend server
       - name: Start the backend server
         run: |
           cd back
           echo "PORT=3000" >> $GITHUB_ENV
-          nohup node server.js
+          nohup node server.js &
         continue-on-error: false
-        
+
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
