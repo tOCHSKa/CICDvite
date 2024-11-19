@@ -30,7 +30,7 @@ jobs:
           mkdir back/public
           ls
           cp -r dist/ back/public/
-          cd back
+          cd back/dist
           ls
         # mv dist/* back/public
         # cd back
