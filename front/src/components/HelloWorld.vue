@@ -58,7 +58,7 @@ onMounted(() => {
       return response.json(); // Convertir la réponse en JSON
     })
     .then(data => {
-      users.value = data.message; // Assignation des données
+      users.value = [data.message]; // Assignation des données
       console.log('Données reçues :', data);
     })
     .catch(err => {
