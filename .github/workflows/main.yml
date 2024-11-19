@@ -21,6 +21,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
+          cd front
           npm install
           npm run build
 
@@ -29,7 +30,7 @@ jobs:
         run: |
           mkdir back/public
           ls
-          cp -r dist/ back/public/
+          cp -r front/dist/ back/public/
           ls
         # mv dist/* back/public
         # cd back
