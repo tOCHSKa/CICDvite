@@ -71,21 +71,8 @@ app.use('/api/search/castByMovie', movieCast)
 const actorCast = require('./apiRequest/getActorImage.js')
 app.use('/api/search/castInfoByMovie', actorCast)
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`)
-})
+const port = process.env.PORT || 3000;
 
-
-
-
-
-
-// app.use(cors({
-//     origin: 'http://10.0.0.29:3000', // Tu peux ajouter plusieurs origines ici si nécessaire
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permets les méthodes HTTP que tu utilises
-//     allowedHeaders: ['Content-Type', 'Authorization'], // Ajoute les en-têtes nécessaires
-// }));
-
-// app.listen(process.env.PORT, "0.0.0.0", () => {
-//     console.log(`Server is running on port ${process.env.PORT}`)
-// })
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

@@ -39,6 +39,7 @@ jobs:
       - name: Start the backend server
         run: |
           cd back
+          echo "PORT=3000" >> $GITHUB_ENV
           node server.js
         continue-on-error: false
         
