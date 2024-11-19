@@ -40,7 +40,7 @@ jobs:
         run: |
           cd back
           echo "PORT=3000" >> $GITHUB_ENV
-          node server.js
+          nohup node server.js
         continue-on-error: false
         
       - name: Deploy to FTP
