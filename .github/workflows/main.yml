@@ -13,6 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+        
+      - name: Install backend dependencies
+        run: |
+          cd back
+          npm install
+        continue-on-error: false  # Ce paramètre garantit que l'échec de l'installation arrêtera le pipeline.
+
       - name: Install dependencies and build
         run: |
           npm install
